@@ -31,11 +31,89 @@ def chute_correto(chute, palavra_secreta, letras_acertadas):
         index += 1
 
 
-def mensagem_resultado(resultado):
+def desenha_forca(erros):
+    print("  _______     ")
+    print(" |/      |    ")
+
+    if (erros == 1):
+        print(" |      (_)   ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+
+    if (erros == 2):
+        print(" |      (_)   ")
+        print(" |      \     ")
+        print(" |            ")
+        print(" |            ")
+
+    if (erros == 3):
+        print(" |      (_)   ")
+        print(" |      \|    ")
+        print(" |            ")
+        print(" |            ")
+
+    if (erros == 4):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |            ")
+        print(" |            ")
+
+    if (erros == 5):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |            ")
+
+    if (erros == 6):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      /     ")
+
+    if (erros == 7):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
+
+    print(" |            ")
+    print("_|___         ")
+    print()
+
+
+def mensagem_resultado(resultado, palavra_secreta):
     if resultado:
-        print("Você ganhou!")
+        print("Parabéns, você ganhou!")
+        print("       ___________      ")
+        print("      '._==_==_=_.'     ")
+        print("      .-\\:      /-.    ")
+        print("     | (|:.     |) |    ")
+        print("      '-|:.     |-'     ")
+        print("        \\::.    /      ")
+        print("         '::. .'        ")
+        print("           ) (          ")
+        print("         _.' '._        ")
+        print("        '-------'       ")
     else:
-        print("Você perdeu!")
+        print("Puxa, você foi enforcado!")
+        print("A palavra era {}".format(palavra_secreta))
+        print("    _______________         ")
+        print("   /               \       ")
+        print("  /                 \      ")
+        print("//                   \/\  ")
+        print("\|   XXXX     XXXX   | /   ")
+        print(" |   XXXX     XXXX   |/     ")
+        print(" |   XXX       XXX   |      ")
+        print(" |                   |      ")
+        print(" \__      XXX      __/     ")
+        print("   |\     XXX     /|       ")
+        print("   | |           | |        ")
+        print("   | I I I I I I I |        ")
+        print("   |  I I I I I I  |        ")
+        print("   \_             _/       ")
+        print("     \_         _/         ")
+        print("       \_______/           ")
 
 
 def jogar():
@@ -50,15 +128,15 @@ def jogar():
         chute = pede_chute()
         if chute in palavra_secreta:
             chute_correto(chute, palavra_secreta, letras_acertadas)
+            print(letras_acertadas)
         else:
             erros += 1
-            print("Restam {} tentativas".format(len(palavra_secreta)-erros))
-        print(letras_acertadas)
-        if erros == 6:
-            mensagem_resultado(False)
+            desenha_forca(erros)
+        if erros == 7:
+            mensagem_resultado(False, palavra_secreta)
             break
         if "_" not in letras_acertadas:
-            mensagem_resultado(True)
+            mensagem_resultado(True, palavra_secreta)
             break
 
 
