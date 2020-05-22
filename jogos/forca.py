@@ -82,8 +82,8 @@ def desenha_forca(erros):
     print()
 
 
-def mensagem_resultado(resultado, palavra_secreta):
-    if resultado:
+def mensagem_resultado(palavra_secreta=None):
+    if not palavra_secreta:
         print("Parabéns, você ganhou!")
         print("       ___________      ")
         print("      '._==_==_=_.'     ")
@@ -133,10 +133,10 @@ def jogar():
             erros += 1
             desenha_forca(erros)
         if erros == 7:
-            mensagem_resultado(False, palavra_secreta)
+            mensagem_resultado(palavra_secreta)
             break
         if "_" not in letras_acertadas:
-            mensagem_resultado(True, palavra_secreta)
+            mensagem_resultado()
             break
 
 
