@@ -1,16 +1,23 @@
+import random
+
+
+def palavra_sorteada():
+    arquivo = open("palavras.txt", "r")
+    palavras = [palavra.strip() for palavra in arquivo]
+    arquivo.close()
+    palavra_secreta = random.choice(palavras).upper()
+    return palavra_secreta
+
+
 def jogar():
     print("*********************************")
     print("***Bem vindo ao jogo da Forca!***")
     print("*********************************")
 
-    arquivo = open("palavras.txt", "r")
-    linha = arquivo.readline().strip()
-    arquivo.close()
-    palavra_secreta = linha.upper()
+    palavra_secreta = palavra_sorteada()
     letras_acertadas = ["_" for letra in palavra_secreta]
-
     erros = 0
-    print(len(palavra_secreta))
+    print("Dica: o tamanho da plavra é {}.".format(len(palavra_secreta)))
     print(letras_acertadas)
 
     while True:
