@@ -7,8 +7,8 @@ def imprime_mensagem_abertura():
     print("*********************************")
 
 
-def palavra_sorteada():
-    with open("palavras.txt", "r") as arquivo:
+def palavra_sorteada(nome_arquivo="palavras.txt"):
+    with open(nome_arquivo, "r") as arquivo:
         palavras = [palavra.strip() for palavra in arquivo]
         palavra_secreta = random.choice(palavras).upper()
     return palavra_secreta
